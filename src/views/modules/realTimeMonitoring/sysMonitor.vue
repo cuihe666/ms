@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<el-row style="height: 670px;">
-			<el-col :span="17" class=" border-right">
+			<el-col :span="17" class=" border-right" style="height: 100%;">
 				<!-- <div class="padding border-bottom">
 					<font-awesome-icon :icon="['fas', 'volume-up']" class="text-blue" />
 					<span class="text-gray m-l-10">是一款基于css框架的网页字体图标库,它完全免费... 最新的4.7.0版,收录了675个图标</span>
@@ -13,11 +13,11 @@
 						<div class="text-blue">总交易量</div>
 						<el-row>
 							<el-col :span="16" style="padding-top: 15px;">
-								<span class="text-large">50.452</span>
+								<span class="text-large">{{transNum.total}}</span>
 								笔
 							</el-col>
 							<el-col :span="8">
-								<div>
+								<!-- <div>
 									TPS:
 									<span class="text-blue">3</span>
 									笔/秒
@@ -26,14 +26,14 @@
 									RTT:
 									<span class="text-blue">3</span>
 									us
-								</div>
+								</div> -->
 								<div>
 									成功数:
-									<span class="text-blue">3</span>
+									<span class="text-blue">{{transNum.successTotal}}</span>
 								</div>
 								<div>
 									失败数:
-									<span class="text-red">123123</span>
+									<span class="text-red">{{transNum.falseTotal}}</span>
 								</div>
 							</el-col>
 						</el-row>
@@ -133,69 +133,27 @@
 						告警列表
 					</h4>
 					<el-row>
-						<el-col :span="12" class="padding">
+						<el-col :span="10" class="padding">
 							告警总数：
-							<span class="text-red">123</span>
+							<span class="text-red">{{alarmCount.total}}</span>
 						</el-col>
-						<el-col :span="12" class="padding">
+						<el-col :span="7" class="padding">
 							警告：
-							<span class="text-yellow">123</span>
+							<span class="text-yellow">{{alarmCount.warningTotal}}</span>
+						</el-col>
+						<el-col :span="7" class="padding">
+							严重：
+							<span class="text-yellow">{{alarmCount.seriousTotal}}</span>
 						</el-col>
 					</el-row>
 				</div>
 				
 				<div class="alertMsg">
-					<div class="border m-t-10 padding">
-						<div class="">2020-01-01 12:00:00 <strong class="m-l-10">持续:34:11:35</strong></div>
-						<div class="text-gray m-t-10">asdfa sdfa sdf124 2342 342341</div>
-					</div>
-					<div class="border m-t-10 padding">
-						<div class="">2020-01-01 12:00:00 <strong class="m-l-10">持续:34:11:35</strong></div>
-						<div class="text-gray m-t-10">asdfa sdfa sdf124 2342 342341</div>
-					</div>
-					<div class="border m-t-10 padding">
-						<div class="">2020-01-01 12:00:00 <strong class="m-l-10">持续:34:11:35</strong></div>
-						<div class="text-gray m-t-10">asdfa sdfa sdf124 2342 342341</div>
-					</div>
-					<div class="border m-t-10 padding">
-						<div class="">2020-01-01 12:00:00 <strong class="m-l-10">持续:34:11:35</strong></div>
-						<div class="text-gray m-t-10">asdfa sdfa sdf124 2342 342341</div>
-					</div>
-					<div class="border m-t-10 padding">
-						<div class="">2020-01-01 12:00:00 <strong class="m-l-10">持续:34:11:35</strong></div>
-						<div class="text-gray m-t-10">asdfa sdfa sdf124 2342 342341</div>
-					</div>
-					<div class="border m-t-10 padding">
-						<div class="">2020-01-01 12:00:00 <strong class="m-l-10">持续:34:11:35</strong></div>
-						<div class="text-gray m-t-10">asdfa sdfa sdf124 2342 342341</div>
-					</div>
-					<div class="border m-t-10 padding">
-						<div class="">2020-01-01 12:00:00 <strong class="m-l-10">持续:34:11:35</strong></div>
-						<div class="text-gray m-t-10">asdfa sdfa sdf124 2342 342341</div>
-					</div>
-					<div class="border m-t-10 padding">
-						<div class="">2020-01-01 12:00:00 <strong class="m-l-10">持续:34:11:35</strong></div>
-						<div class="text-gray m-t-10">asdfa sdfa sdf124 2342 342341</div>
-					</div>
-					<div class="border m-t-10 padding">
-						<div class="">2020-01-01 12:00:00 <strong class="m-l-10">持续:34:11:35</strong></div>
-						<div class="text-gray m-t-10">asdfa sdfa sdf124 2342 342341</div>
-					</div>
-					<div class="border m-t-10 padding">
-						<div class="">2020-01-01 12:00:00 <strong class="m-l-10">持续:34:11:35</strong></div>
-						<div class="text-gray m-t-10">asdfa sdfa sdf124 2342 342341</div>
-					</div>
-					<div class="border m-t-10 padding">
-						<div class="">2020-01-01 12:00:00 <strong class="m-l-10">持续:34:11:35</strong></div>
-						<div class="text-gray m-t-10">asdfa sdfa sdf124 2342 342341</div>
-					</div>
-					<div class="border m-t-10 padding">
-						<div class="">2020-01-01 12:00:00 <strong class="m-l-10">持续:34:11:35</strong></div>
-						<div class="text-gray m-t-10">asdfa sdfa sdf124 2342 342341</div>
-					</div>
-					<div class="border m-t-10 padding">
-						<div class="">2020-01-01 12:00:00 <strong class="m-l-10">持续:34:11:35</strong></div>
-						<div class="text-gray m-t-10">asdfa sdfa sdf124 2342 342341</div>
+					<img v-if="alarmList.length == 0" src="../../../assets/img/img-01.png" width="50%" alt="" />
+					<div v-if="alarmList.length == 0" class="text-gray">暂无告警信息</div>
+					<div v-if="alarmList.length != 0" class="border m-t-10 padding" v-for="(item, index) in alarmList" :key="index">
+						<div style="font-size: 12px;">{{item.timeAlarm ? item.timeAlarm : '---'}} <strong class="m-l-10">持续:{{item.dateTime ? item.dateTime : '---'}}</strong></div>
+						<div class="text-gray m-t-10">{{item.content ? item.content : '---'}}</div>
 					</div>
 				</div>
 			</el-col>
@@ -284,7 +242,14 @@ export default {
             	}
         	],
         	historyTransSort: [], // 历史交易排行数据
-        	timer: 0
+        	timer: 0,
+        	transNum: {},
+        	alarmCount: {
+		        total: 0,
+		        warningTotal: 0,
+		        seriousTotal: 0
+		    },
+		    alarmList: []
 		};
 	},
 	components: { TablePart },
@@ -304,6 +269,9 @@ export default {
 			this.getTsscLine();
 			this.getTransactionData();
 			this.getTransSort();
+			this.getTransNum();
+			this.getAlarmNum();
+			this.getAlarmList();
 			var timer = setTimeout(function(th){
 			 	th.setIntervalFun();
 				clearTimeout(timer);
@@ -327,6 +295,16 @@ export default {
 	              this.asymmet.akTotal = data.data.akTotal;
 	              this.asymmet.sm2 = data.data.sm2;
 	              this.asymmet.rsa = data.data.rsa;
+	            } else if (data.respCode == '10022') {
+	            	// 对称密钥
+	              this.symmet.skTotal = 0;
+	              this.symmet.aes = 0;
+	              this.symmet.sm4 = 0;
+	              this.symmet.des = 0;
+	              // 非对称密钥
+	              this.asymmet.akTotal = 0;
+	              this.asymmet.sm2 = 0;
+	              this.asymmet.rsa = 0;
 	            } else {
 	              this.$message.error('密钥数据获取失败，请稍后再试！')
 	            }
@@ -407,6 +385,65 @@ export default {
 	            console.log(err);
 	          })
 	    },
+	    // 获取交易量数据
+	    getTransNum () {
+	      this.$http({
+	        url: this.$http.adornUrl('/trans/getTransNum'),
+	        method: 'get'
+	      })
+	        .then(({data}) => {
+	          if (data.respCode == '00') {
+	              this.transNum = data.data;
+	          } else {
+	            this.$message.error('总交易量数据获取失败，请稍后再试！')
+	          }
+	        })
+	        .catch((err) => {
+	          console.log(err);
+	          this.$message.error('总交易量数据获取失败，请稍后再试！');
+	        })
+	    },
+	    // 告警数量
+	    getAlarmNum () {
+	      this.$http({
+	            url: this.$http.adornUrl('/alarm/getAlarmStatistics'),
+	            method: 'get'
+	          })
+	          .then(({data}) => {
+	            if (data.respCode == '00') {
+	              this.alarmCount.total = data.data.total;
+	              this.alarmCount.warningTotal = data.data.warningTotal;
+	              this.alarmCount.seriousTotal = data.data.seriousTotal;
+	            } else {
+	              this.$message.error('告警数量获取失败，请稍后再试！')
+	            }
+	          })
+	          .catch((err) => {
+	            this.$message.error('数据获取失败，请稍后再试！')
+	            console.log(err);
+	          })
+	    },
+	    // 获取告警列表
+	    getAlarmList () {
+	      this.$http({
+	            url: this.$http.adornUrl('/devices/getAlertDetails?noDevice=&pageNum=1&pageSize=1000'),
+	            method: 'get'
+	          })
+	          .then(({data}) => {
+	            if (data.respCode == '00') {
+	              this.alarmList = data.data;
+	            } else if (data.respCode == '01') {
+	            	this.alarmList = [];
+	            } else {
+	            	this.alarmList = [];
+	              this.$message.error('告警列表获取失败，请稍后再试！')
+	            }
+	          })
+	          .catch((err) => {
+	            this.$message.error('数据获取失败，请稍后再试！')
+	            console.log(err);
+	          })
+	    }
 	},
 	// 此方法是为了页面切换的时候，清楚页面内数据刷新；
 	beforeRouteLeave(to, from, next) {

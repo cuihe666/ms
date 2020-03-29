@@ -4,6 +4,7 @@
  import tuopu from './echarts/topological'
  import diagram from './echarts/diagram'
  import { transE, pieE, barTopE } from './echarts/tsscEcharts'
+ import alarmPie from "./echarts/alarmPie"
  
  // 首页拓扑图
  export function LoopTP (data, th) {
@@ -104,6 +105,13 @@ export function TsscTopBar (data) {
     var option = barTopE(data);
     myChart.setOption(option);
 }
+
+// 新版首页警告饼图
+export function alarm (data) {
+    var myChart = echarts.init(document.getElementById('alarmPie'));
+    var option = alarmPie(data);
+    myChart.setOption(option);
+}
 export default {
 	LoopTP,
 	Diagram,
@@ -111,5 +119,6 @@ export default {
     TsscCpuPie,
     TsscMemoryPie,
     TsscStoragePie,
-    TsscTopBar
+    TsscTopBar,
+    alarm
 }

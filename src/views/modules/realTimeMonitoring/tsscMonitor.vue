@@ -1,7 +1,7 @@
 <template>
 	<div class="tsscAndFkms">
 		<el-row>
-			<el-col :span="17" class=" border-right">
+			<el-col :span="17" class=" border-right" style="height: 100%;">
 				<!-- 选择模块 -->
 				<div class="padding border-bottom flex justify-content-end align-items-center">
 					<div>
@@ -22,47 +22,132 @@
 				<div>
 					<h4 class="title">总交易量</h4>
 					<div class="text-center">
-						<span class="text-large">123,234</span>
+						<span class="text-large">{{transNum.total}}</span>
 						笔
 					</div>
 					<el-row class="text-center" style="margin-top: 30px; margin-bottom: 20px;">
-						<el-col :span="6">
-							<div>2019-02-10：</div>
+						<el-col :span="8">
+							<div>成功笔数：</div>
 							<div class="m-t-10">
-								<span class="text-blue">0</span>
+								<span class="text-blue">{{transNum.successTotal}}</span>
 								笔
 							</div>
 						</el-col>
-						<el-col :span="6">
-							<div>闲比：</div>
+						<el-col :span="8">
+							<div>失败笔数：</div>
 							<div class="m-t-10">
-								<span class="text-blue">0</span>
+								<span class="text-red">{{transNum.falseTotal}}</span>
+								笔
+							</div>
+						</el-col>
+						<el-col :span="8">
+							<div>总成功率：</div>
+							<div class="m-t-10">
+								<span class="text-blue">{{transNum.successPercentage}}</span>
 								%
 							</div>
 						</el-col>
-						<el-col :span="6">
-							<div>TPS：</div>
-							<div class="m-t-10">
-								<span class="text-blue">1</span>
-								笔/秒
-							</div>
-						</el-col>
-						<el-col :span="6">
+						<!-- <el-col :span="6">
 							<div>ATT：</div>
 							<div class="m-t-10">
 								<span class="text-blue">1</span>
 								笔/秒
 							</div>
+						</el-col> -->
+					</el-row>
+					<hr class="border" />
+					<el-row>
+						<el-col :span="12">
+							<el-col :span="12" class="padding text-center">
+								<el-row>
+									<font-awesome-icon :icon="['fas', 'key']" class="text-blue" style="font-size: 40px; margin-top:40px;" />
+								</el-row>
+								<el-row>
+									<h4>非对称密钥</h4>
+									<p>总数量：<span class="text-auto">{{asymmet.akTotal}}</span></p>
+								</el-row>
+							</el-col>
+							<el-col :span="10" class="padding feiduichen-content">
+								<div class="flex justify-content-between align-items-end">
+									<div>SM2</div>
+									<div>
+										<span class="text-blue text-auto">{{asymmet.sm2}}</span>个
+									</div>
+								</div>
+								<div class="flex justify-content-between align-items-end m-t-10">
+									<div>RAS</div>
+									<div>
+										<span class="text-blue text-auto">{{asymmet.ras}}</span> 个
+									</div>
+								</div>
+								<hr class="border">
+								<div class="flex justify-content-between align-items-end">
+									<div>今日增加</div>
+									<div>
+										<span class="text-blue text-auto">{{asymmet.akTodayAdd}}</span> 个
+									</div>
+								</div>
+								<div class="flex justify-content-between align-items-end m-t-10">
+									<div>今日更新</div>
+									<div>
+										<span class="text-blue text-auto">{{asymmet.akTodayUpdate}}</span> 个
+									</div>
+								</div>
+							</el-col>
+						</el-col>
+						<el-col :span="12">
+							<el-col :span="12" class="padding text-center">
+								<el-row>
+									<font-awesome-icon :icon="['fas', 'key']" class="text-blue" style="font-size: 40px; margin-top:46px;" />
+								</el-row>
+								<el-row>
+									<h4>对称密钥</h4>
+									<p>总数量：<span class="text-auto">{{symmet.skTotal}}</span></p>
+								</el-row>
+							</el-col>
+							<el-col :span="10" class="padding duichen-content">
+								<div class="flex justify-content-between align-items-end">
+									<div>AES</div>
+									<div>
+										<span class="text-blue text-auto">{{symmet.aes}}</span> 个
+									</div>
+								</div>
+								<div class="flex justify-content-between align-items-end m-t-10">
+									<div>SM4</div>
+									<div>
+										<span class="text-blue text-auto">{{symmet.sm4}}</span> 个
+									</div>
+								</div>
+								<div class="flex justify-content-between align-items-end m-t-10">
+									<div>DES</div>
+									<div>
+										<span class="text-blue text-auto">{{symmet.des}}</span> 个
+									</div>
+								</div>
+								<hr class="border">
+								<div class="flex justify-content-between align-items-end">
+									<div>今日增加</div>
+									<div>
+										<span class="text-blue text-auto">{{symmet.skTodayAdd}}</span> 个
+									</div>
+								</div>
+								<div class="flex justify-content-between align-items-end m-t-10">
+									<div>今日更新</div>
+									<div>
+										<span class="text-blue text-auto">{{symmet.skTodayUpdate}}</span> 个
+									</div>
+								</div>
+							</el-col>
 						</el-col>
 					</el-row>
-
 					<hr class="border" />
 					<h4 class="title">总体交易趋势(单位:笔/分)</h4>
 					<div class="transE" style="height: 200px;">
-
+						
 					</div>
+					
 					<hr class="border" />
-					<el-row>
+					<!-- <el-row>
 						<el-col :span="12">
 							<h4 class="title">TPS</h4>
 							<div style="height: 200px;">图表</div>
@@ -71,7 +156,7 @@
 							<h4 class="title">RTT</h4>
 							<div style="height: 200px;">图表</div>
 						</el-col>
-					</el-row>
+					</el-row> -->
 				</div>
 			</el-col>
 			<!-- 右侧部分 -->
@@ -83,31 +168,23 @@
 				<el-row>
 					<el-col :span="10" class="padding">
 						告警总数：
-						<span class="text-red">123</span>
+						<span class="text-red">{{alarmCount.total}}</span>
+					</el-col>
+					<el-col :span="7" class="padding">
+						警告：
+						<span class="text-yellow">{{alarmCount.warningTotal}}</span>
 					</el-col>
 					<el-col :span="7" class="padding">
 						严重：
-						<span class="text-yellow">123</span>
-					</el-col>
-					<el-col :span="7" class="padding">
-						严重：
-						<span class="text-yellow">123</span>
+						<span class="text-yellow">{{alarmCount.seriousTotal}}</span>
 					</el-col>
 				</el-row>
 				<div class="text-center alertWrap">
-					<!-- <img src="../../../assets/img/img-01.png" width="50%" alt="" />
-					<div class="text-gray">暂无告警信息</div> -->
-					<div class="border m-t-10 padding">
-						<div class="">2020-01-01 12:00:00 <strong class="m-l-10">持续:34:11:35</strong></div>
-						<div class="text-gray m-t-10">asdfa sdfa sdf124 2342 342341</div>
-					</div>
-					<div class="border m-t-10 padding">
-						<div class="">2020-01-01 12:00:00 <strong class="m-l-10">持续:34:11:35</strong></div>
-						<div class="text-gray m-t-10">asdfa sdfa sdf124 2342 342341</div>
-					</div>
-					<div class="border m-t-10 padding">
-						<div class="">2020-01-01 12:00:00 <strong class="m-l-10">持续:34:11:35</strong></div>
-						<div class="text-gray m-t-10">asdfa sdfa sdf124 2342 342341</div>
+					<img v-if="alarmList.length == 0" src="../../../assets/img/img-01.png" width="50%" alt="" />
+					<div v-if="alarmList.length == 0" class="text-gray">暂无告警信息</div>
+					<div v-if="alarmList.length != 0" class="border m-t-10 padding" v-for="(item, index) in alarmList" :key="index">
+						<div style="font-size: 12px;">{{item.timeAlarm ? item.timeAlarm : '---'}} <strong class="m-l-10">持续:{{item.dateTime ? item.dateTime : '---'}}</strong></div>
+						<div class="text-gray m-t-10" style="text-align: left;">{{item.content ? item.content : '---'}}</div>
 					</div>
 				</div>
 				<hr class="border" />
@@ -154,7 +231,29 @@ export default {
 				region: [{ required: true, message: '请选择平台', trigger: 'change' }]
 			},
 			timer: 0,
-			connectionNumber: 0
+			connectionNumber: 0,
+			asymmet: {
+				akTotal: 0,
+				sm2: 0,
+				ras: 0,
+				akTodayAdd: 0,
+				akTodayUpdate: 0
+			},// 非对称密钥
+			symmet: {
+				skTotal: 0,
+				aes: 0,
+				sm4: 0,
+				des: 0,
+				skTodayAdd: 0,
+				skTodayUpdate: 0
+			},// 对称密钥
+			transNum: {}, // 交易数量信息
+			alarmCount: {
+		        total: 0,
+		        warningTotal: 0,
+		        seriousTotal: 0
+		    },
+		    alarmList: []
 		};
 	},
 	created () {
@@ -177,9 +276,13 @@ export default {
 		// 这是实现5秒请求一次数据
 		setIntervalFun () {
 			let _this = this;
+			this.getTransNum();
 			this.getTsscLine();
 			this.getTop5();
 			this.getPie();
+			this.getSecretKey();
+			this.getAlarmNum();
+			this.getAlarmList();
 			var timer=setTimeout(function(th){
 			 	th.setIntervalFun();
 				clearTimeout(timer);
@@ -189,6 +292,7 @@ export default {
 		// 这是选择平台后切换的方法
 		changeOpt () {
 			clearTimeout(this.timer);
+			console.log(this.ruleForm.region);
 			this.setIntervalFun();
 		},
 		// 获取tssc的总体交易趋势折线图
@@ -219,14 +323,11 @@ export default {
 	            this.$message.error('数据获取失败，请稍后再试！');
 	          })
 		},
-		// 获取tssc平台
+		// 获取设备平台
 		getPlatForms () {
 			this.$http({
 	            url: this.$http.adornUrl('/devices/getDevicesByType'),
-	            method: 'get',
-	            params: this.$http.adornParams({
-	              type: 1
-	            }, false)
+	            method: 'get'
 	          })
 	          .then(({data}) => {
 	            if (data.respCode == '00') {
@@ -246,14 +347,54 @@ export default {
 	            this.$message.error('平台数据获取失败，请稍后再试！');
 	          })
 		},
+		// 获取密钥信息
+		getSecretKey () {
+			this.$http({
+	            url: this.$http.adornUrl('/sk/getSkByNoDevice'),
+	            method: 'get',
+	            params: this.$http.adornParams({
+	              noDevice: this.ruleForm.region
+	            }, false)
+	          })
+	          .then(({data}) => {
+	            if (data.respCode == '00') {
+                  // 对称密钥
+	              this.symmet.skTotal = data.data.skTotal;
+	              this.symmet.aes = data.data.aes;
+	              this.symmet.sm4 = data.data.sm4;
+	              this.symmet.des = data.data.des;
+	              this.symmet.skTodayAdd = data.data.skTodayAdd;
+	              this.symmet.skTodayUpdate = data.data.skTodayUpdate;
+	              // 非对称密钥
+	              this.asymmet.akTotal = data.data.akTotal;
+	              this.asymmet.sm2 = data.data.sm2;
+	              this.asymmet.rsa = data.data.rsa;
+	              this.asymmet.akTodayAdd = data.data.akTodayAdd;
+	              this.asymmet.akTodayUpdate = data.data.akTodayUpdate;
+	            } else if (data.respCode == '10022') {
+	            	// 对称密钥
+	              this.symmet.skTotal = 0;
+	              this.symmet.aes = 0;
+	              this.symmet.sm4 = 0;
+	              this.symmet.des = 0;
+	              // 非对称密钥
+	              this.asymmet.akTotal = 0;
+	              this.asymmet.sm2 = 0;
+	              this.asymmet.rsa = 0;
+	            } else {
+	              this.$message.error('密钥数据获取失败，请稍后再试！')
+	            }
+	          })
+	          .catch((err) => {
+	          	console.log(err);
+	            this.$message.error('数据获取失败，请稍后再试！');
+	          })
+		},
 		// 应用服务TOP5
 		getTop5 () {
 			this.$http({
 	            url: this.$http.adornUrl('/trans/getTransTop5'),
-	            method: 'get',
-	            params: this.$http.adornParams({
-	              typeDevice: 1
-	            }, false)
+	            method: 'get'
 	          })
 	          .then(({data}) => {
 	            if (data.respCode == '00') {
@@ -290,9 +431,9 @@ export default {
 	          .then(({data}) => {
 	            if (data.respCode == '00') {
                   this.connectionNumber = data.data.port;
-                  TsscCpuPie(data.data.cpu);
-                  TsscMemoryPie(data.data.ram);
-                  TsscStoragePie(data.data.disk);
+                  TsscCpuPie(data.data.cpu ? data.data.cpu : 0);
+                  TsscMemoryPie(data.data.ram ? data.data.ram : 0);
+                  TsscStoragePie(data.data.disk ? data.data.disk : 0);
 	            } else {
 	              this.$message.error('数据获取失败，请稍后再试！')
 	            }
@@ -301,7 +442,77 @@ export default {
 	          	console.log(err);
 	            this.$message.error('数据获取失败，请稍后再试！');
 	          })
-		}
+		},
+		// 获取总交易量信息
+		getTransNum () {
+			this.$http({
+	            url: this.$http.adornUrl('/trans/getTransNum'),
+	            method: 'get',
+	            params: this.$http.adornParams({
+	              noDevice: this.ruleForm.region
+	            }, false)
+	          })
+	          .then(({data}) => {
+	            if (data.respCode == '00') {
+                  this.transNum = data.data;
+	            } else {
+	              this.$message.error('总交易量数据获取失败，请稍后再试！')
+	            }
+	          })
+	          .catch((err) => {
+	          	console.log(err);
+	            this.$message.error('总交易量数据获取失败，请稍后再试！');
+	          })
+		},
+		// 告警数量
+	    getAlarmNum () {
+	      this.$http({
+	            url: this.$http.adornUrl('/alarm/getAlarmStatistics'),
+	            method: 'get',
+	            params: this.$http.adornParams({
+	              noDevice: this.ruleForm.region
+	            }, false)
+	          })
+	          .then(({data}) => {
+	            if (data.respCode == '00') {
+	              this.alarmCount.total = data.data.total;
+	              this.alarmCount.warningTotal = data.data.warningTotal;
+	              this.alarmCount.seriousTotal = data.data.seriousTotal;
+	            } else {
+	              this.$message.error('告警数量获取失败，请稍后再试！')
+	            }
+	          })
+	          .catch((err) => {
+	            this.$message.error('数据获取失败，请稍后再试！')
+	            console.log(err);
+	          })
+	    },
+	    // 获取告警列表
+	    getAlarmList () {
+	      this.$http({
+	            url: this.$http.adornUrl('/devices/getAlertDetails'),
+	            method: 'get',
+	            params: this.$http.adornParams({
+	              noDevice: this.ruleForm.region,
+	              pageNum: 1,
+	              pageSize: 10000
+	            }, false)
+	          })
+	          .then(({data}) => {
+	            if (data.respCode == '00') {
+	              this.alarmList = data.data;
+	            } else if (data.respCode == '01') {
+	              this.alarmList = [];
+	            } else {
+	              this.alarmList = [];
+	              this.$message.error('告警列表获取失败，请稍后再试！')
+	            }
+	          })
+	          .catch((err) => {
+	            this.$message.error('数据获取失败，请稍后再试！')
+	            console.log(err);
+	          })
+	    }
 	},
 	// 此方法是为了页面切换的时候，清楚页面内数据刷新；
 	beforeRouteLeave(to, from, next) {
@@ -430,5 +641,29 @@ export default {
 }
 .alertWrap .padding{
 	text-align: left!important;
+}
+.top-left{
+	float: left;
+	width: 56%;
+}
+.top-right{
+	width: 44%;
+	float: right;
+	height: 490px;
+}
+.feiduichen{
+	height: 203px;
+}
+.duichen{
+	height: 272px;
+}
+.text-auto{
+	font-size: 20px;
+}
+.feiduichen-content{
+	padding-top: 40px;
+}
+.duichen-content{
+	padding-top: 24px;
 }
 </style>

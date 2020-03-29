@@ -98,10 +98,10 @@ export default  function tuopu (datas) {
         charts.linesData.push(lines)
     }
     var option = {
-        title: {
-            text: '系统设备拓扑图'
-        },
-        backgroundColor: "white",
+        // title: {
+        //     text: '系统设备拓扑图'
+        // },
+        backgroundColor: "rgba(0,0,0,0)",
         polar: {},
         radiusAxis: {
             show: false

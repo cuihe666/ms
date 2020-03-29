@@ -64,7 +64,7 @@ export default function diagram (data) {
 	    }]
 	}
 	var option = {
-	    backgroundColor:'#1b2735',
+	    backgroundColor:'rgba(0,0,0,0)',
 	    tooltip: {
 	        trigger: 'axis'
 	    },
@@ -74,19 +74,22 @@ export default function diagram (data) {
 	            fontSize: 12,
 	            color: 'rgb(0,253,255,0.6)'
 	        },
-	        right: '4%'
+	        right: '10%'
 	    },
 	    grid: {
 	        top: '14%',
-	        left: '4%',
+	        left: '3%',
 	        right: '4%',
 	        bottom: '12%',
 	        containLabel: true
 	    },
 	    xAxis: {
 	        type: 'category',
-	        boundaryGap: false,
+	        boundaryGap: true,
 	        data: charts.lineX,
+	        axisLine: {
+	        	symbol: ['none', 'arrow']
+	        },
 	        axisLabel: {
 	            textStyle: {
 	                color: 'rgb(0,253,255,0.6)'

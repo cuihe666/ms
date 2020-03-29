@@ -61,7 +61,7 @@ export function transE (data, grid) {
 	            "data": data,
 				"areaStyle": {
 				    "normal": {
-				      "color": 'black' //改变区域颜色
+				      "color": 'rgb(23,255,243,0.3)' //改变区域颜色
 				    }
 				  },
 	        }
